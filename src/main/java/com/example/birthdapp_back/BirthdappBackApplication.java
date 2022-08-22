@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class BirthdappBackApplication {
 
     public static void main(String[] args) {
+        //System.out.println("Test");
         SpringApplication.run(BirthdappBackApplication.class, args);
     }
-
 }
