@@ -3,6 +3,7 @@ package com.example.birthdapp_back.service;
 import com.example.birthdapp_back.model.User;
 import com.example.birthdapp_back.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
 
