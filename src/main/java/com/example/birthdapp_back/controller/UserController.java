@@ -21,10 +21,9 @@ public class UserController {
     public List<User> getUsers() {
         return userService.getAllUsers();
     }
-//
-//    @GetMapping("/test")
-//    public User getUsers(@PathVariable String id) {
-//        System.out.println("ça marche");
-//        return userService.login("GCorin", "1234");
-//    }
+
+    @GetMapping("/{userId}")
+    public User getUserById(@PathVariable("userId") Long id) {
+        return userService.getUserByID(id);
+    }
 }
