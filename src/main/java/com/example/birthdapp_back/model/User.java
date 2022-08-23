@@ -1,9 +1,7 @@
 package com.example.birthdapp_back.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class User {
@@ -11,6 +9,9 @@ public class User {
     private String username;
     private String password;
     private String email;
+
+    @OneToMany(mappedBy = "user")
+    private Set<Birthday> birthdays;
 
     public User() {
         super();
@@ -32,6 +33,10 @@ public class User {
         return email;
     }
 
+    public Set<Birthday> getBirthdays() {
+        return birthdays;
+    }
+
 
     @Override
     public String toString() {
@@ -42,5 +47,4 @@ public class User {
                 ", email='" + email + '\'' +
                 '}';
     }
-
 }

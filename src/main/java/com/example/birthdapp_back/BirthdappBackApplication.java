@@ -9,5 +9,6 @@ public class BirthdappBackApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(BirthdappBackApplication.class, args);
+        //System.out.println("Test");
     }
 }
