@@ -39,4 +39,13 @@ public class UserService implements UserServiceInterface {
         return null;
     }
 
+    @Override
+    public User getUserByID(Long id) {
+        Optional<User> userOptional = userRepository.findById(id);
+
+        if (!userOptional.isPresent()) {
+            return new User();
+        }
+        return userOptional.get();
+    }
 }
