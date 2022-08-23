@@ -1,5 +1,7 @@
 package com.example.birthdapp_back.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -9,6 +11,7 @@ public class Birthday {
     private @Id Long id;
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
+    @JsonBackReference
     private User user;
     private LocalDate date;
     private String firstname;

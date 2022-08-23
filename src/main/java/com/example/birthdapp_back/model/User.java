@@ -1,9 +1,12 @@
 package com.example.birthdapp_back.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
+@Table(name = "user", schema = "public")
 public class User {
     private @Id @GeneratedValue(strategy = GenerationType.IDENTITY) Long id;
     private String username;
@@ -11,6 +14,7 @@ public class User {
     private String email;
 
     @OneToMany(mappedBy = "user")
+    @JsonManagedReference
     private Set<Birthday> birthdays;
 
     public User() {
