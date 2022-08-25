@@ -2,6 +2,7 @@ package com.example.birthdapp_back.controller;
 
 import com.example.birthdapp_back.model.Birthday;
 import com.example.birthdapp_back.model.User;
+import com.example.birthdapp_back.service.BirthdayService;
 import com.example.birthdapp_back.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -28,7 +29,7 @@ public class UserController {
     @GetMapping("/{userId}")
     public ResponseEntity<User> getUserById(@PathVariable("userId") Long id) {
         try {
-            User user = userService.getUserByID(id);
+            User user = userService.getUserById(id);
             return ResponseEntity.ok(user);
         } catch (Exception e) {
             return ResponseEntity.badRequest().build();
@@ -43,7 +44,7 @@ public class UserController {
             @RequestParam("date") final String date) {
 
         try {
-            User user = userService.getUserByID(id);
+            User user = userService.getUserById(id);
             Birthday birthday = new Birthday(null, LocalDate.parse(date), firstname, lastname, user);
             return ResponseEntity.ok(birthdayService.save(birthday));
         } catch (Exception e) {
