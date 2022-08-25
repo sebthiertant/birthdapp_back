@@ -7,8 +7,9 @@ import java.time.LocalDate;
 
 @Entity
 public class Birthday {
-
-    private @Id Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     @JsonBackReference
@@ -19,6 +20,15 @@ public class Birthday {
 
     public Birthday() {
         super();
+    }
+
+    public Birthday(Long id, LocalDate date, String firstname, String lastname, User user) {
+        super();
+        this.id = id;
+        this.date = date;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.user = user;
     }
 
     public Long getId() {
