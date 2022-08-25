@@ -19,6 +19,7 @@ public class UserService{
     public User login(String username, String password) throws Exception {
         return userRepository.findByUsernameAndPassword(username, password).orElseThrow(Exception::new);
     }
+
     public User getUserById(Long id) throws Exception {
         return userRepository.findById(id).orElseThrow(Exception::new);
     }
@@ -35,5 +36,6 @@ public class UserService{
     public User loadByUsername(String username) throws Exception {
         return userRepository.findByUsername(username).orElseThrow(Exception::new);
     }
+
 
 }
