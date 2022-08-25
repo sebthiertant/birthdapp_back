@@ -52,5 +52,17 @@ public class UserController {
         }
     }
 
+    @PostMapping("/login")
+    public ResponseEntity<User> login(
+            @RequestParam("username") final String username,
+            @RequestParam("password") final String password) {
+
+        try {
+            User user = userService.login(username, password);
+            return ResponseEntity.ok(user);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().build();
+        }
+    }
 
 }
