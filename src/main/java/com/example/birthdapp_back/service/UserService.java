@@ -11,41 +11,29 @@ import java.util.List;
 import java.util.Optional;
 
 @Service("user")
-public class UserService implements UserServiceInterface {
+public class UserService{
 
     @Autowired
     private UserRepository userRepository;
 
-    @Override
-    public User login(String username, String password)  {
-        Optional<User> optionalUser = userRepository.findByUsernameAndPassword(username, password);
-
-        System.out.println("-----------> " + optionalUser);
-
-        if (!optionalUser.isPresent()) {
-            return new User();
-        }
-        System.out.println(optionalUser.get());
-        return new User();
+    public User login(String username, String password) throws Exception {
+        return userRepository.findByUsernameAndPassword(username, password).orElseThrow(Exception::new);
+    }
+    public User getUserById(Long id) throws Exception {
+        return userRepository.findById(id).orElseThrow(Exception::new);
     }
 
-    @Override
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
 
-    @Override
+
     public User save(User user) {
-        return null;
+        return userRepository.save(user);
     }
 
-    @Override
-    public User getUserByID(Long id) {
-        Optional<User> userOptional = userRepository.findById(id);
-
-        if (!userOptional.isPresent()) {
-            return new User();
-        }
-        return userOptional.get();
+    public User loadByUsername(String username) throws Exception {
+        return userRepository.findByUsername(username).orElseThrow(Exception::new);
     }
+
 }
